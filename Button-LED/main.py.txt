@@ -1,0 +1,18 @@
+from machine import Pin
+from time import sleep
+
+# Short delay to allow USB connection to stabilize
+sleep(0.01)
+
+print("Press Button To Light LED!")
+
+# Configure pins
+led = Pin(22, Pin.OUT)
+button = Pin(14, Pin.IN, Pin.PULL_UP)
+
+# Monitor button state
+while True:
+    if button.value() == 0: # Button pressed (active-low)
+        led.on()
+    else:
+        led.off()

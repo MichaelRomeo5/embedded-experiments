@@ -1,0 +1,16 @@
+from machine import Pin
+from time import sleep
+
+# Short delay to allow USB connection to stabilize
+sleep(0.01)
+
+# Configure pins
+led = Pin(22, Pin.OUT)
+ir_sensor = Pin(14, Pin.IN)
+
+# Turn on LED when object is detected
+while True:
+    if ir_sensor.value() == 0:
+        led.on()
+    else:
+        led.off()
